@@ -13,10 +13,10 @@ ssh -J root@$bastion_ip root@$someinternalhost_ip
 1. Если соединение нужно выполнить командой вида
 > ssh someinternalhost
 то решение такое:
-> bastion_ip=35.189.214.30
-> someinternalhost_ip=10.132.0.5
-> someinternalhost="-J root@$bastion_ip root@$someinternalhost_ip"
-> ssh $someinternalhost 
+bastion_IP=35.189.214.30
+someinternalhost_IP=10.132.0.5
+someinternalhost="-J root@$bastion_ip root@$someinternalhost_ip"
+ssh $someinternalhost 
 
 2. если соединение нужно выполнить командой вида
 > someinternalhost
