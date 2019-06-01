@@ -48,3 +48,7 @@ Host bastion
 HostName 35.189.214.30
 User root
 ```
+
+** ДЗ №4**
+testapp_IP = 35.193.66.7
+testapp_port = 9292
