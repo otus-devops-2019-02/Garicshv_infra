@@ -1,4 +1,3 @@
-#!/bin/bash
-export bastion_ip=35.189.214.30
-export someinternalhost_ip=10.132.0.5
-
+#! /bin/sh
+export testapp_IP=35.193.66.7
+export testapp_port=9292
