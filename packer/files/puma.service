@@ -1,0 +1,17 @@
+[Unit]
+Description=puma_reddit_service
+After=mongod.service
+After=network.target
+Requires=mongod.service
+
+[Service]
+Type=simple
+ExecStart=/usr/local/bin/puma -d
+WorkingDirectory=/home/appuser/reddit
+User=appuser
+Restart=always
+RestartSec=1s
+
+[Install]
+WantedBy=multi-user.target
+
