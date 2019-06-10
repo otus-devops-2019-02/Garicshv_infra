@@ -1,0 +1,120 @@
+commonInstanceMetadata:
+  fingerprint: n99OEYOt2Vg=
+  items:
+  - key: ssh-keys
+    value: |
+      garicshv:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQCd4oD755NGXnLdBQOnSL3oNkYxI1ahGhHn3hJ7sA9OdlpMRIfvf8ChXIhEVHgMQfeD/7BQw/S4jl0RABPl44NAEkJE4bTyXBLLeQjOxkedwsJsuVCPGhnezikeJoA6Zvq6sr9aVNOM7FXWRNsINmYZ2Djtmv4mW2Lslj8taB4egRaBaSzybya3OR4T+Y/atyhyeflWJvPk3LS3z0usu/U80q5kgyikPW1cjrGkJ+ySpKW/T27rGoPD4kIMMeRvrMos8ftvft1RimLM8B8a87muQmKKhV5x+VFRZ3WdLAypZFqLeyMgmkUGkVe41DwiXrlGO6suYMaCCIHpGtMHB4MD google-ssh {"userName":"garicshv@gmail.com","expireOn":"2019-06-05T05:03:56+0000"}
+      garicshv:ecdsa-sha2-nistp256 AAAAE2VjZHNhLXNoYTItbmlzdHAyNTYAAAAIbmlzdHAyNTYAAABBBEO4ODagbY7obyOGs8pCTTVErslLGQzpD29yIfVHS9Da5gNJX1gV0rzPAemg24K9u/DsuGNgHRz5l7rYPQof2Dk= google-ssh {"userName":"garicshv@gmail.com","expireOn":"2019-06-05T05:03:54+0000"}
+      appuser:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDbwePwQBAu7K8W+2vfFN554HTXiju5suDUhfS8v4fYswOFaBnnkfDdf8KfdHE1v7D8StPx/cn0D+E6fkr0uiqsZWVhpAJ0shoOmMktv44iw/wwWGVUw/6NA98PsgL9OVP6yauNMUcC7WrzPEpUReABoTKjYa2/jTwotKDPb0ohtJEaESN+Ef+lALxa37/VQZ9lHCmH18cB/iIYPI+1gdiAUb812iMsksAk+42xP7Ozwh4lptG6x0z2pZ8n57frK5Ac5zVhgBD1f+F8mr/P2xCQJoBYSg/i6630y8qiKi1Ee2J+SupwT0Xz2yW9H1gdJ9IrC2T4odoCuhLreJ+9gnSv appuser
+  - key: sshKeys
+    value: |
+      ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmsvWYHYKPoSFADdbgIEjfG3kgW3vJvZPHNC6Px/U4p+9XYCLQk218RPZl/9UybLu/MUARAQ5iigyOLCIiLl76u+1PQCOoE7uEAcaIo7YdNWt/zKJ1HcQVhUe46JUgH6BcPcAICgDNJMr5hDsv3Wsr5bPc4Lr3wlE3tfuG2lQyvB2ajcJFjUOXMuiUNyb/ubyKGASR3waH2raaFC2+R48yA4Xo/c7PF1hUsuUthcQUegRmcNmqDsVJ6s/khOR+TpmizBItJkKCLaOSVHAhgUQfuUcbMznKqhPNEnZKQyFmNWbpTQJ34PwXHrMhVGVzN/6eTGilltteIQdgdC0x7vk3 appuser@kvaga-VirtualBox
+  kind: compute#metadata
+creationTimestamp: '2019-04-15T12:13:09.360-07:00'
+defaultNetworkTier: PREMIUM
+defaultServiceAccount: 186550176091-compute@developer.gserviceaccount.com
+id: '5479908651564624170'
+kind: compute#project
+name: infra-237719
+quotas:
+- limit: 1000.0
+  metric: SNAPSHOTS
+  usage: 0.0
+- limit: 5.0
+  metric: NETWORKS
+  usage: 1.0
+- limit: 100.0
+  metric: FIREWALLS
+  usage: 11.0
+- limit: 100.0
+  metric: IMAGES
+  usage: 5.0
+- limit: 1.0
+  metric: STATIC_ADDRESSES
+  usage: 0.0
+- limit: 200.0
+  metric: ROUTES
+  usage: 21.0
+- limit: 15.0
+  metric: FORWARDING_RULES
+  usage: 0.0
+- limit: 50.0
+  metric: TARGET_POOLS
+  usage: 0.0
+- limit: 50.0
+  metric: HEALTH_CHECKS
+  usage: 0.0
+- limit: 8.0
+  metric: IN_USE_ADDRESSES
+  usage: 0.0
+- limit: 50.0
+  metric: TARGET_INSTANCES
+  usage: 0.0
+- limit: 10.0
+  metric: TARGET_HTTP_PROXIES
+  usage: 0.0
+- limit: 10.0
+  metric: URL_MAPS
+  usage: 0.0
+- limit: 5.0
+  metric: BACKEND_SERVICES
+  usage: 0.0
+- limit: 100.0
+  metric: INSTANCE_TEMPLATES
+  usage: 0.0
+- limit: 5.0
+  metric: TARGET_VPN_GATEWAYS
+  usage: 0.0
+- limit: 10.0
+  metric: VPN_TUNNELS
+  usage: 0.0
+- limit: 3.0
+  metric: BACKEND_BUCKETS
+  usage: 0.0
+- limit: 10.0
+  metric: ROUTERS
+  usage: 0.0
+- limit: 10.0
+  metric: TARGET_SSL_PROXIES
+  usage: 0.0
+- limit: 10.0
+  metric: TARGET_HTTPS_PROXIES
+  usage: 0.0
+- limit: 10.0
+  metric: SSL_CERTIFICATES
+  usage: 0.0
+- limit: 100.0
+  metric: SUBNETWORKS
+  usage: 20.0
+- limit: 10.0
+  metric: TARGET_TCP_PROXIES
+  usage: 0.0
+- limit: 12.0
+  metric: CPUS_ALL_REGIONS
+  usage: 3.0
+- limit: 10.0
+  metric: SECURITY_POLICIES
+  usage: 0.0
+- limit: 100.0
+  metric: SECURITY_POLICY_RULES
+  usage: 0.0
+- limit: 100.0
+  metric: NETWORK_ENDPOINT_GROUPS
+  usage: 0.0
+- limit: 6.0
+  metric: INTERCONNECTS
+  usage: 0.0
+- limit: 5.0
+  metric: GLOBAL_INTERNAL_ADDRESSES
+  usage: 0.0
+- limit: 5.0
+  metric: VPN_GATEWAYS
+  usage: 0.0
+- limit: 0.0
+  metric: GPUS_ALL_REGIONS
+  usage: 0.0
+- limit: 5.0
+  metric: EXTERNAL_VPN_GATEWAYS
+  usage: 0.0
+selfLink: https://www.googleapis.com/compute/v1/projects/infra-237719
+xpnProjectStatus: UNSPECIFIED_XPN_PROJECT_STATUS
