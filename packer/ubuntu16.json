@@ -15,7 +15,7 @@
 	    "tags": "http-server,https-server",
             "source_image_family": "ubuntu-1604-lts",
             "zone": "europe-west1-b",
-            "ssh_username": "root",
+            "ssh_username": "appuser",
 	    "disk_type": "pd-standard",
 	    "disk_size": "10",
             "machine_type": "{{user `machine_type`}}"
