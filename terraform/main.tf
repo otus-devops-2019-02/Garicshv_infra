@@ -47,7 +47,7 @@ resource "google_compute_instance" "app" {
 
   metadata {
     # путь до публичного ключа
-    ssh-keys = "appuser:${file("/home/appuser/.ssh/id_rsa.pub")}" 
+    ssh-keys = "appuser:${file("${var.public_key_path}")}" 
   }
 
   # определение параметров подключения провижионеров к VM
