@@ -125,7 +125,8 @@ resource "google_compute_instance" "app2" {
   metadata {
     # путь до публичного ключа
     #ssh-keys = "appuser:${file("/home/appuser/.ssh/id_rsa.pub")}"
-    ssh-keys = "appuser:${file("${var.public_key_path}")}"
+    #ssh-keys = "appuser:${file("${var.public_key_path}")}"
+	ssh-keys = "appuser:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmsvWYHYKPoSFADdbgIEjfG3kgW3vJvZPHNC6Px/U4p+9XYCLQk218RPZl/9UybLu/MUARAQ5iigyOLCIiLl76u+1PQCOoE7uEAcaIo7YdNWt/zKJ1HcQVhUe46JUgH6BcPcAICgDNJMr5hDsv3Wsr5bPc4Lr3wlE3tfuG2lQyvB2ajcJFjUOXMuiUNyb/ubyKGASR3waH2raaFC2+R48yA4Xo/c7PF1hUsuUthcQUegRmcNmqDsVJ6s/khOR+TpmizBItJkKCLaOSVHAhgUQfuUcbMznKqhPNEnZKQyFmNWbpTQJ34PwXHrMhVGVzN/6eTGilltteIQdgdC0x7vk3 appuser@kvaga-VirtualBox"
   }
 
   # определение параметров подключения провижионеров к VM
