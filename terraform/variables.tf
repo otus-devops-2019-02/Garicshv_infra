@@ -23,6 +23,7 @@ variable private_key_path {
 }
 
 variable zone {
+	# zone
   description = "Zone location"
   default = "europe-west1-b"
 }
