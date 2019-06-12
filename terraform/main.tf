@@ -14,8 +14,7 @@ provider "google" {
 
 resource "google_compute_project_metadata" "ssh_keys" {
   metadata {
-    #ssh-keys = "appuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}"
-	ssh-keys = "appuser1:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmsvWYHYKPoSFADdbgIEjfG3kgW3vJvZPHNC6Px/U4p+9XYCLQk218RPZl/9UybLu/MUARAQ5iigyOLCIiLl76u+1PQCOoE7uEAcaIo7YdNWt/zKJ1HcQVhUe46JUgH6BcPcAICgDNJMr5hDsv3Wsr5bPc4Lr3wlE3tfuG2lQyvB2ajcJFjUOXMuiUNyb/ubyKGASR3waH2raaFC2+R48yA4Xo/c7PF1hUsuUthcQUegRmcNmqDsVJ6s/khOR+TpmizBItJkKCLaOSVHAhgUQfuUcbMznKqhPNEnZKQyFmNWbpTQJ34PwXHrMhVGVzN/6eTGilltteIQdgdC0x7vk3 appuser@kvaga-VirtualBox\nappuser2:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmsvWYHYKPoSFADdbgIEjfG3kgW3vJvZPHNC6Px/U4p+9XYCLQk218RPZl/9UybLu/MUARAQ5iigyOLCIiLl76u+1PQCOoE7uEAcaIo7YdNWt/zKJ1HcQVhUe46JUgH6BcPcAICgDNJMr5hDsv3Wsr5bPc4Lr3wlE3tfuG2lQyvB2ajcJFjUOXMuiUNyb/ubyKGASR3waH2raaFC2+R48yA4Xo/c7PF1hUsuUthcQUegRmcNmqDsVJ6s/khOR+TpmizBItJkKCLaOSVHAhgUQfuUcbMznKqhPNEnZKQyFmNWbpTQJ34PwXHrMhVGVzN/6eTGilltteIQdgdC0x7vk3 appuser@kvaga-VirtualBox"
+    ssh-keys = "appuser1:${file(var.public_key_path)}\nappuser2:${file(var.public_key_path)}"
   }
 }
 
@@ -48,8 +47,7 @@ resource "google_compute_instance" "app" {
 
   metadata {
     # путь до публичного ключа
-    #ssh-keys = "appuser:${file("/home/appuser/.ssh/id_rsa.pub")}" 
-     ssh-keys = "appuser:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmsvWYHYKPoSFADdbgIEjfG3kgW3vJvZPHNC6Px/U4p+9XYCLQk218RPZl/9UybLu/MUARAQ5iigyOLCIiLl76u+1PQCOoE7uEAcaIo7YdNWt/zKJ1HcQVhUe46JUgH6BcPcAICgDNJMr5hDsv3Wsr5bPc4Lr3wlE3tfuG2lQyvB2ajcJFjUOXMuiUNyb/ubyKGASR3waH2raaFC2+R48yA4Xo/c7PF1hUsuUthcQUegRmcNmqDsVJ6s/khOR+TpmizBItJkKCLaOSVHAhgUQfuUcbMznKqhPNEnZKQyFmNWbpTQJ34PwXHrMhVGVzN/6eTGilltteIQdgdC0x7vk3 appuser@kvaga-VirtualBox"
+    ssh-keys = "appuser:${file("/home/appuser/.ssh/id_rsa.pub")}" 
   }
 
   # определение параметров подключения провижионеров к VM
@@ -125,8 +123,7 @@ resource "google_compute_instance" "app2" {
   metadata {
     # путь до публичного ключа
     #ssh-keys = "appuser:${file("/home/appuser/.ssh/id_rsa.pub")}"
-    #ssh-keys = "appuser:${file("${var.public_key_path}")}"
-	ssh-keys = "appuser:ssh-rsa AAAAB3NzaC1yc2EAAAADAQABAAABAQDmsvWYHYKPoSFADdbgIEjfG3kgW3vJvZPHNC6Px/U4p+9XYCLQk218RPZl/9UybLu/MUARAQ5iigyOLCIiLl76u+1PQCOoE7uEAcaIo7YdNWt/zKJ1HcQVhUe46JUgH6BcPcAICgDNJMr5hDsv3Wsr5bPc4Lr3wlE3tfuG2lQyvB2ajcJFjUOXMuiUNyb/ubyKGASR3waH2raaFC2+R48yA4Xo/c7PF1hUsuUthcQUegRmcNmqDsVJ6s/khOR+TpmizBItJkKCLaOSVHAhgUQfuUcbMznKqhPNEnZKQyFmNWbpTQJ34PwXHrMhVGVzN/6eTGilltteIQdgdC0x7vk3 appuser@kvaga-VirtualBox"
+    ssh-keys = "appuser:${file("${var.public_key_path}")}"
   }
 
   # определение параметров подключения провижионеров к VM
