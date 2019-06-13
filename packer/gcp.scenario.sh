@@ -1,6 +1,6 @@
 #! /bin/bash
 
-source gcp.sh
+source gcp.lib.sh
 PROJECT_NAME=infra-237719
 echo PROJECT_NAME=$PROJECT_NAME;
 INSTANCE_NAME=instance-reddit-full-$(date +%s)

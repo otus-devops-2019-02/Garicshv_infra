@@ -28,3 +28,6 @@ function usage(){
 	echo "$0 project-name instance-name image-name";
 	exit 1;
 }
+function createADC(){
+	gcloud auth application-default login
+}
