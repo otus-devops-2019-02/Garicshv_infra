@@ -6,7 +6,7 @@ variable region {
   description = "Region"
 
   # Значение по умолчанию
-  default = "europe-west1"
+  default = "europe-west2"
 }
 
 variable public_key_path {
@@ -25,7 +25,7 @@ variable private_key_path {
 variable zone {
 	# zone
   description = "Zone location"
-  default = "europe-west1-b"
+  default = "europe-west22-b"
 }
 
 variable node_count{
@@ -33,4 +33,8 @@ variable node_count{
 	default = "1"
 }
 
+variable app_disk_image {
+	description = "Disk image for reddit app"
+	default = "reddit-app-base"
+}
 
