@@ -11,12 +11,17 @@ echo IMAGE_NAME=$IMAGE_NAME
 function usage(){
 	echo "Usage:"
 	echo "$0 create_instance"
+	echo "$0 get_firewall_rules"
 	exit 1
 }
 
 case $1 in
 	create_instance)
 		create_instance
+	;;
+	get_firewall_rules)
+	echo "Getting firewall rules from GCP..."
+	get_firewall_rules
 	;;
 	*)
 		usage

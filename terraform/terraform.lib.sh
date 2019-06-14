@@ -48,4 +48,9 @@ function format(){
 	terraform fmt
 }
 
+function get(){
+	# Загрузить модули из источника (локальная файловая система)
+	terraform get
+}
+
 

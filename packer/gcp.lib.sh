@@ -31,3 +31,13 @@ function usage(){
 function createADC(){
 	gcloud auth application-default login
 }
+
+function get_firewall_rules(){
+	gcloud compute firewall-rules list
+}
+
+function import_external_resource(){
+	# Importing external resource [$2] into local terraform's resource[$1]
+	terraform import $1 $2
+}
+

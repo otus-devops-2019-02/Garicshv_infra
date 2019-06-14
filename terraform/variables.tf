@@ -35,6 +35,11 @@ variable node_count{
 
 variable app_disk_image {
 	description = "Disk image for reddit app"
-	default = "reddit-app-base"
+	default = "ubuntu-1604-lts"
+}
+
+variable db_disk_image {
+        description = "Disk image for reddit db"
+        default = "ubuntu-1604-lts"
 }
 
