@@ -9,4 +9,6 @@ region = "europe-west1"
 zone = "europe-west1-b"
 node_count=2
 
+ssh_source_range= "0.0.0.0/0"
+
 
