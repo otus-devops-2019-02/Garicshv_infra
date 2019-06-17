@@ -219,3 +219,117 @@ resource "google_compute_instance" "app2" {
 Решение:   
 не успел. чуть позже сделаю
 
+**ВЫПОЛНЕНО ДЗ №7**
+Работа выполнена в ветке terraform-2. Файд lb.tf перенесен в terraform/files.   
+Проверено определение ресурса правила файервола:
+```
+resource "google_compute_firewall" "firewall_ssh" {
+name = "default-allow-ssh"
+network = "default"
+allow {
+protocol = "tcp"
+ports = ["22"]
+}
+source_ranges = ["0.0.0.0/0"]
+}
+```
+Проверен импорт существующей конфигурации terraform
+```
+terraform import google_compute_firewall.firewall_ssh default-allow-ssh
+```
+Проверено задание ресурса ip address:
+```
+resource "google_compute_address" "app_ip" {
+name = "reddit-app-ip"
+}
+```
+и ссылку на данный ресурс:
+```
+network_interface {
+network = "default"
+access_config = {
+nat_ip = "${google_compute_address.app_ip.address}"
+}
+}
+```
+Проверена работа приложения и БД в разных инстансах VM (app.tf и db.tf).  
+А так же создание переменных для объявления образов диска:
+```
+variable app_disk_image {
+description = "Disk image for reddit app"
+default = "reddit-app-base"
+}
+variable db_disk_image {
+description = "Disk image for reddit db"
+default = "reddit-db-base"
+}
+```
+Создан vpc.tf с объявлением всех правил файервола, включая ssh.
+
+Проверена возможность и удобство использования модулей на примере modules/db и modules/app и их загрухку:
+```
+terraform get
+```
+**Задача:**  
+Аналогично предыдущим модулям создайте модуль vpc, в котором определите настройки файервола в рамках сети. Используйте созданный модуль в основной конфигурации terraform/main.tf  
+Решение:  
+Выполнено за счет определения ресурса файервола
+```
+resource "google_compute_firewall" "firewall_ssh" {
+        name = "allow-ssh"
+        network = "default"
+        allow {
+                protocol = "tcp"
+                ports    = ["22"]
+        }
+
+        # правило применяется к ресурсам с задаваемым нами тегом
+        target_tags = ["reddit-app","reddit-db"]
+        source_ranges = "${var.source_ranges}"
+}
+```
+и проверен доступ по ssh на оба хоста
+
+**Задача:**  
+Проверьте работу параметризованного в прошлом слайде
+модуля vpc.  
+1. Введите в source_ranges не ваш IP адрес, примените правило и проверьте отсутствие соединения к обоим хостам по ssh. Проконтролируйте, как изменилось правило файрвола в веб консоли.  
+2. Введите в source_ranges ваш IP адрес, примените правило и проверьте наличие соединения к обоим хостам по ssh.  
+3. Верните 0.0.0.0/0 в source_ranges.  
+Решение:
+1. проверено отсутствие доступа при указании диапазона адресов, в который не входит мой ip  
+2. проверено наличие доступа при указании диапазона адресов, в который входит мой ip адрес  
+3. оставлен диапазон 0.0.0.0/0 полного доступа
+
+**Задача:**  
+1. Удалите из папки terraform файлы main.tf, outputs.tf, terraform.tfvars, variables.tf, так как они теперь перенесены в stage и prod  
+2. Параметризируйте конфигурацию модулей насколько считаете нужным  
+3. Отформатируйте конфигурационные файлы, используя команду terraform fmt  
+Решение:  
+1. удалены main.tf, outputs.tf, terraform.tfvars, variables.tf  
+2. выполнена параметризация  
+3. выполнено форматирование  
+  
+  
+  
+  
+  
+Дополнительно создан storage-bucket.tf для определения бакета
+```
+provider "google" {
+version = "2.0.0"
+project = "${var.project}"
+region = "${var.region}"
+}
+module "storage-bucket" {
+source = "SweetOps/storage-bucket/google"
+version = "0.1.1"
+# Имена поменяйте на другие
+name = ["my-bucket-test", "my-bucket-test2"]
+}
+output storage-bucket_url {
+value = "${module.storage-bucket.url}"
+}
+```
+и проверена работоспособность (создание бакета) через web console.  
+
