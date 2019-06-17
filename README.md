@@ -215,7 +215,7 @@ resource "google_compute_instance" "app2" {
 Основаная проблема ткого подхода в том, что приходится делать избыточное копирование кусков кода, что загромождает код и логику и может приводить к ошибкам из-за сложной поддержки
   
 **Задача с двумя звездочками:**  
-Как мы видим, подход с созданием доп. инстанса копированием кода выглядит нерационально, т.к. копируется много кода. Удалите описание reddit-app2 и попробуйте подход с заданием количества инстансов через параметр ресурса count. Переменная count должна задаваться в параметрах и по умолчанию равна 1.
+Как мы видим, подход с созданием доп. инстанса копированием кода выглядит нерационально, т.к. копируется много кода. Удалите описание reddit-app2 и попробуйте подход с заданием количества инстансов через параметр ресурса count. Переменная count должна задаваться в параметрах и по умолчанию равна 1.  
 Решение:   
 не успел. чуть позже сделаю
   
@@ -224,13 +224,13 @@ resource "google_compute_instance" "app2" {
 Проверено определение ресурса правила файервола:  
 ```
 resource "google_compute_firewall" "firewall_ssh" {
-name = "default-allow-ssh"
-network = "default"
-allow {
-protocol = "tcp"
-ports = ["22"]
-}
-source_ranges = ["0.0.0.0/0"]
+	name = "default-allow-ssh"
+	network = "default"
+	allow {
+		protocol = "tcp"
+		ports = ["22"]
+	}
+	source_ranges = ["0.0.0.0/0"]
 }
 ```
 Проверен импорт существующей конфигурации terraform
@@ -240,28 +240,28 @@ terraform import google_compute_firewall.firewall_ssh default-allow-ssh
 Проверено задание ресурса ip address:
 ```
 resource "google_compute_address" "app_ip" {
-name = "reddit-app-ip"
+	name = "reddit-app-ip"
 }
 ```
 и ссылку на данный ресурс:
 ```
 network_interface {
-network = "default"
-access_config = {
-nat_ip = "${google_compute_address.app_ip.address}"
-}
+	network = "default"
+	access_config = {
+		nat_ip = "${google_compute_address.app_ip.address}"
+	}
 }
 ```
 Проверена работа приложения и БД в разных инстансах VM (app.tf и db.tf).  
 А так же создание переменных для объявления образов диска:
 ```
 variable app_disk_image {
-description = "Disk image for reddit app"
-default = "reddit-app-base"
+	description = "Disk image for reddit app"
+	default = "reddit-app-base"
 }
 variable db_disk_image {
-description = "Disk image for reddit db"
-default = "reddit-db-base"
+	description = "Disk image for reddit db"
+	default = "reddit-db-base"
 }
 ```
 Создан vpc.tf с объявлением всех правил файервола, включая ssh.  
@@ -293,39 +293,39 @@ resource "google_compute_firewall" "firewall_ssh" {
 **Задача:**    
 Проверьте работу параметризованного в прошлом слайде
 модуля vpc.  
-1. Введите в source_ranges не ваш IP адрес, примените правило и проверьте отсутствие соединения к обоим хостам по ssh. Проконтролируйте, как изменилось правило файрвола в веб консоли.  
-2. Введите в source_ranges ваш IP адрес, примените правило и проверьте наличие соединения к обоим хостам по ssh.  
-3. Верните 0.0.0.0/0 в source_ranges.    
+* Введите в source_ranges не ваш IP адрес, примените правило и проверьте отсутствие соединения к обоим хостам по ssh. Проконтролируйте, как изменилось правило файрвола в веб консоли.  
+* Введите в source_ranges ваш IP адрес, примените правило и проверьте наличие соединения к обоим хостам по ssh.  
+* Верните 0.0.0.0/0 в source_ranges.    
 Решение:  
-1. проверено отсутствие доступа при указании диапазона адресов, в который не входит мой ip  
-2. проверено наличие доступа при указании диапазона адресов, в который входит мой ip адрес  
-3. оставлен диапазон 0.0.0.0/0 полного доступа
+* проверено отсутствие доступа при указании диапазона адресов, в который не входит мой ip  
+* проверено наличие доступа при указании диапазона адресов, в который входит мой ip адрес  
+* оставлен диапазон 0.0.0.0/0 полного доступа
   
 **Задача:**    
-1. Удалите из папки terraform файлы main.tf, outputs.tf, terraform.tfvars, variables.tf, так как они теперь перенесены в stage и prod  
-2. Параметризируйте конфигурацию модулей насколько считаете нужным  
-3. Отформатируйте конфигурационные файлы, используя команду terraform fmt    
+* Удалите из папки terraform файлы main.tf, outputs.tf, terraform.tfvars, variables.tf, так как они теперь перенесены в stage и prod  
+* Параметризируйте конфигурацию модулей насколько считаете нужным  
+* Отформатируйте конфигурационные файлы, используя команду terraform fmt    
 Решение:  
-1. удалены main.tf, outputs.tf, terraform.tfvars, variables.tf  
-2. выполнена параметризация  
-3. выполнено форматирование  
+* удалены main.tf, outputs.tf, terraform.tfvars, variables.tf  
+* выполнена параметризация  
+* выполнено форматирование  
   
    
 Дополнительно создан storage-bucket.tf для определения бакета
 ```
 provider "google" {
-version = "2.0.0"
-project = "${var.project}"
-region = "${var.region}"
+	version = "2.0.0"
+	project = "${var.project}"
+	region = "${var.region}"
 }
 module "storage-bucket" {
-source = "SweetOps/storage-bucket/google"
-version = "0.1.1"
-# Имена поменяйте на другие
-name = ["my-bucket-test", "my-bucket-test2"]
+	source = "SweetOps/storage-bucket/google"
+	version = "0.1.1"
+	# Имена поменяйте на другие
+	name = ["my-bucket-test", "my-bucket-test2"]
 }
 output storage-bucket_url {
-value = "${module.storage-bucket.url}"
+	value = "${module.storage-bucket.url}"
 }
 ```
 и проверена работоспособность (создание бакета) через web console.  
