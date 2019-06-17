@@ -112,7 +112,7 @@ sudo gcloud compute firewall-rules create new-rule --allow tcp:22,tcp:9292
     },
 ```
 **Задача:**  
-2. Пользовательские переменные определяются в самом шаблоне, в файле variables.json задаются обязательные переменные, либо переопределяются
+2. Пользовательские переменные определяются в самом шаблоне, в файле variables.json задаются обязательные переменные, либо переопределяются  
 Решение:  
 Создан файл variables.json  
 **Задача:**  
@@ -147,7 +147,7 @@ sudo gcloud compute firewall-rules create new-rule --allow tcp:22,tcp:9292
 Создан скрипт config-scripts/create-reddit-vm.sh, который выполняет создание инстанса VM на основе необходимого образа
   
 **ВЫПОЛНЕНО ДЗ №6**  
-Создана ветка terraform-1. В файле terraform.tfvars.example используются ключи пользователя appuser.
+Создана ветка terraform-1. В файле terraform.tfvars.example используются ключи пользователя appuser.  
   
 Выставлен PR с labels terraform и terraform-1.
 **Задача с одной звездочкой:**  
