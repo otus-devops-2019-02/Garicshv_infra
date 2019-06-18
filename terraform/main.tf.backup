@@ -42,7 +42,9 @@ resource "google_compute_instance" "app" {
     network = "default"
 
     # использовать ephemeral IP для доступа из Интернет
-    access_config {}
+    access_config {
+	nat_ip = "${google_compute_address.app_ip.address}"
+    }
   }
 
   metadata {
@@ -92,60 +94,17 @@ resource "google_compute_firewall" "firewall_puma" {
   target_tags = ["reddit-app"]
 }
 
+resource "google_compute_firewall" "firewall_ssh" {
+	name = "default-allow-ssh"
+	network = "default"
+	allow {
+		protocol = "tcp"
+		ports = ["22"]
+	}
+	source_ranges = ["0.0.0.0/0"]
+}
 
-resource "google_compute_instance" "app2" {
-  #count = "${var.node_count}"
-  #name         = "reddit-app-${var.node_count}"
-  name         = "reddit-app2"
-  machine_type = "g1-small"
-
-  #zone = "europe-west1-b"
-  zone = "${var.zone}"
-  tags = ["reddit-app"]
-
-  # определение загрузочного диска
-  boot_disk {
-    initialize_params {
-      # image = "reddit-base-1559710950"
-      image = "${var.disk_image}"
-    }
-  }
-
-  # определение сетевого интерфейса
-  network_interface {
-    # сеть, к которой присоединить данный интерфейс
-    network = "default"
-
-    # использовать ephemeral IP для доступа из Интернет
-    access_config {}
-  }
-
-  metadata {
-    # путь до публичного ключа
-    #ssh-keys = "appuser:${file("/home/appuser/.ssh/id_rsa.pub")}"
-    ssh-keys = "appuser:${file("${var.public_key_path}")}"
-  }
-
-  # определение параметров подключения провижионеров к VM
-  connection {
-    type  = "ssh"
-    user  = "appuser"
-    agent = false
-
-    # путь до приватного ключа
- #private_key = "${file("~/.ssh/id_rsa.insecure")}"
-    private_key = "${file("${var.private_key_path}")}"
-  }
-
-  # копируем файл сервиса
-  provisioner "file" {
-    source      = "files/puma.service"
-    destination = "/tmp/puma.service"
-  }
-
-  # запускаем выполнение скрипта деплоя сразу после предыдущего провижионера
-  provisioner "remote-exec" {
-    script = "files/deploy.sh"
-  }
+resource "google_compute_address" "app_ip" {
+	name = "reddit-app-ip"
 }
 

@@ -6,6 +6,15 @@ function usage(){
 	echo "init - "
 	echo "plan - "
 	echo "apply - "
+	echo "get_ip - "
+	echo "refresh - "
+	echo "output - "
+	echo "project_info - "
+        echo "taint - "
+        echo "destroy - "
+        echo "restart1 - "
+        echo "format - "	
+        echo "get - " 
 	exit 1
 }
 case $1 in
@@ -52,6 +61,10 @@ case $1 in
 	format)
 	echo "Formatting files ..."
 	format
+	;;
+	get)
+	echo "Loading local modules"
+	get
 	;;
 	*)
 	usage
