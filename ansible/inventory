@@ -1,0 +1,8 @@
+# определяем группу серверов app
+[app]
+appserver ansible_host=35.246.76.254
+
+# определяем группу серверов db
+[db]
+dbserver ansible_host=35.246.5.237
+

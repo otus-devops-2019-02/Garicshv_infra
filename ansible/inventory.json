@@ -1,0 +1,17 @@
+{
+	"app": {
+		"hosts": {
+			"app1": {
+				"ansible_host": "bastion1"
+			}
+		}
+	},
+	"db": {
+		"hosts": {
+			"db1": {
+				"ansible_host": "dbserver2"
+			}
+		}
+	}
+}
+
