@@ -336,7 +336,7 @@ value = "${module.storage-bucket.url}"
 **ВЫПОЛНЕНО ДЗ №8**  
 Работа выполнена в ветке ansible-1.   
 
-Реализованы три формата инвентарори:
+Реализованы три формата инвентори:
 * inventory
 * inventory.yml
 * inventory.json
@@ -351,4 +351,27 @@ ansible-playbook clone.yml
 ```
 ansible app -m command -a 'rm -rf ~/reddit'
 ```
-получаем состояние changed для appserver, т.к. ansible заметил отсутствие репозитория и выполнил успешно операцию из clone.yml. Повторное выполненние clone.yml changed не показывает, что значит фактические действия плейбука не выполняются
+получаем состояние changed для appserver, т.к. ansible заметил отсутствие репозитория и выполнил успешно операцию из clone.yml. Повторное выполненние clone.yml changed не показывает, что значит фактические действия плейбука не выполняются   
+
+**Задача со звездочкой**   
+Создан файл inventory.json для статического инвентори. Команда
+```
+ansible all -m ping
+```
+выполняется успешно.   
+Создан скрипт inventory.sh, который генерирует динамический инвентори
+```
+appuser@$ ./inventory.sh --list
+{
+    "servers": ["bastion", "someinternalhost", "reddit-app", "reddit-db", "instance-8", "reddit-app2", "reddit-app5", "reddit-app6", "ubuntu1604gitlab-ci-1", "reddit-app", "reddit-app-startup-script", ],
+}
+
+appuser@$ ./inventory.sh --host
+{
+    "foo1": "bar1",
+    "foo2": "bar2",
+    "foo3": "bar3",
+}
+```
+
+
