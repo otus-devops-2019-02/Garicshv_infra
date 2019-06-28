@@ -9,6 +9,8 @@ function usage(){
 	echo "$0 store_ssh_password path-to-private-file"
 	echo "$0 check_reddit_app"
 	echo "$0 play_reddit_db"
+	echo "$0 ssh_db"
+	echo "$0 ssh_app"
 	exit 1
 }
 
@@ -52,6 +54,14 @@ case $1 in
 	
 	play)
 	play_reddit_db
+	;;
+
+	ssh_app)
+	ssh 35.246.76.254
+	;;
+
+	ssh_db)
+	ssh 35.246.5.237
 	;;
 
 	*)
