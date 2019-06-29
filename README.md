@@ -374,4 +374,37 @@ appuser@$ ./inventory.sh --host
 }
 ```
 
+**ВЫПОЛНЕНО ДЗ №9**
+  
+* Проверена работа ansible и параметризации на примере файлов reddit_app.yml и reddit_app2.yml. А так же работа в одном сценарии всех задач.
+* Создан db.yml, в котором описано конфигурирование хоста БД
+* Создан app.yml, в котором описано конфигурирование хоста приложения
+* Создан deploy.yml, в котором описан деплой приложения
+* Создан site.yml, в котором описано управление всей инфраструктурой
+   
+Созданы файлы ansible/packer_app.yml и ansible/packer_db.yml, в которых реализованы задачи:   
+* Install ruby and rubygems and required packages
+* Add APT key
+* Add APT repository
+* Install mongodb package
+* Configure service supervisor
+  
+Выполнена интеграция ansible в packer за счет добавления ссылок на файлы packer/app.json и packer/db.json в provisioners:
+```
+"provisioners": [
+	{
+		"type": "ansible",
+		"playbook_file": "ansible/packer_app.yml"
+	}
+]
+
+...
+
+"provisioners": [
+	{
+		"type": "ansible",
+		"playbook_file": "ansible/packer_db.yml"
+	}
+]
+```
 
