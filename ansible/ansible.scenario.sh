@@ -59,13 +59,20 @@ case $1 in
 
 	ssh_app)
 	ssh 35.246.76.254
+	#ssh 35.246.76.254
 	;;
 
 	ssh_db)
-	ssh 35.246.5.237
+	ssh 35.197.203.47
+	#ssh 35.246.5.237
 	;;
 	check_ansible_syntax)
 	check_ansible_syntax
+	;;
+	
+	init_galaxy)
+	ansible-galaxy init app && \
+	ansible-galaxy init db
 	;;
 
 	*)

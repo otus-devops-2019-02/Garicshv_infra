@@ -1,0 +1,8 @@
+---
+- import_playbook: apt_upgrade_update.yml
+- import_playbook: install_ruby.yml
+- import_playbook: install_mongodb.yml
+- import_playbook: db.yml
+- import_playbook: app.yml
+- import_playbook: deploy.yml
+
