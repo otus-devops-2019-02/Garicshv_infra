@@ -11,6 +11,7 @@ function usage(){
 	echo "$0 play_reddit_db"
 	echo "$0 ssh_db"
 	echo "$0 ssh_app"
+	echo "$0 check_ansible_syntax"
 	exit 1
 }
 
@@ -62,6 +63,9 @@ case $1 in
 
 	ssh_db)
 	ssh 35.246.5.237
+	;;
+	check_ansible_syntax)
+	check_ansible_syntax
 	;;
 
 	*)

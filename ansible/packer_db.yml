@@ -23,6 +23,7 @@
   
   # Включаем сервис
   - name: Configure service inspector
-    systemd: mongod
-    enabled: yes
+    systemd: 
+      name: mongod
+      enabled: yes
 
