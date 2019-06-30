@@ -5,7 +5,7 @@
   tasks:
   # Устанавливаем в цикле все зависимости
    - name: Install Ruby and RubyGems and required packages
-     apt: 
+     apt:
        name: "{{ item }}"
        state: present
      with_items:
