@@ -405,3 +405,43 @@ appuser@$ ./inventory.sh --host
 ]
 ```
 
+**ВЫПОЛНЕНО ДЗ №10**
+**Задача (Community роли)**
+* Добавить параметры 
+
+Решение:  
+**Задача (Stage и Prod)**
+* настроить окружение для stage и prod и playbook  
+Решение:
+Все окружение настроено в виде environments/stage и environments/prod и ansible/playbooks
+  
+**Задача (Проксирование портов)**  
+* Установить роли ansible-galaxy install -r environments/stage/requirements.yml && ansible-galaxy install -r environments/prod/requirements.yml 
+* Добавить параметры проксирования
+```
+nginx_sites:
+	default:
+		- listen 80
+		- server_name "reddit"
+		- location / {
+			proxy_pass http://127.0.0.1:9292;
+		}
+``` 
+* Добавьте в конфигурацию Terraform открытие 80 порта для
+* инстанса приложения
+* Добавьте вызов роли jdauphant.nginx в плейбук app.yml
+* Примените плейбук site.yml для окружения stage и проверьте,что приложение теперь доступно на 80 порту  
+Решение:  
+Все задания по проксированию портов выполнено
+  
+**Задача (Vault)**
+* Создать файл vault.key с паролем для шифрования секретов. Добавить его в .gitignore.
+* Задать параметр vault_password_file в конфиге ansible.cfg
+* Добавить поейбук для создания пользвателей ansible/playbooks/users.yml
+* Создать файлы ansible/environments/prod/credentials.yml и ansible/environments/stage/credentials.yml с соответствующими пользователями
+* Зашифровать файлы, используя vault.key
+* Проверить, что файлы credentials.yml зашифрованы
+* Выполнить ansible-playbook site.yml —check && ansible-playbook site.yml
+* Проверить, что пользователи созданы  
+Решеие: все пункты для Vault выполнены  
+

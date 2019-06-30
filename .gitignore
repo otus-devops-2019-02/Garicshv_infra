@@ -7,4 +7,6 @@ packer/variables.json
 terraform.backup/*
 terraform.backup*
 *.retry
+jdauphant.nginx
+vault.key
 
