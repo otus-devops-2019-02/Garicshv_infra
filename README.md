@@ -409,16 +409,16 @@ appuser@$ ./inventory.sh --host
 ```
 
 **ВЫПОЛНЕНО ДЗ №10**
-** Задача (Community роли)**
+**Задача (Community роли)**
 * Добавить параметры 
 
 Решение:  
-** Задача (Stage и Prod)**
+**Задача (Stage и Prod)**
 * настроить окружение для stage и prod и playbook  
 Решение:
 Все окружение настроено в виде environments/stage и environments/prod и ansible/playbooks
   
-** Задача (Проксирование портов)**  
+**Задача (Проксирование портов)**  
 * Установить роли ansible-galaxy install -r environments/stage/requirements.yml && ansible-galaxy install -r environments/prod/requirements.yml 
 * Добавить параметры проксирования
 ```
