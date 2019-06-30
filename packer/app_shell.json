@@ -8,13 +8,13 @@
         {
             "type": "googlecompute",
             "project_id": "{{user `project_id`}}",
-            "image_name": "mongodb-{{timestamp}}",
-	    "image_description": "MongoDB image",
+            "image_name": "ruby-{{timestamp}}",
+	    "image_description": "Ruby image",
             "image_family": "{{user `source_image_family`}}",
 	    "network": "default",
 	    "tags": "http-server,https-server",
             "source_image_family": "ubuntu-1604-lts",
-            "zone": "europe-west2-b",
+            "zone": "europe-west1-b",
             "ssh_username": "appuser",
 	    "disk_type": "pd-standard",
 	    "disk_size": "10",
@@ -23,9 +23,13 @@
     ],
     "provisioners": [
         {
-		"type": "ansible",
-            	"playbook_file": "ansible/packer_db.yml"
+            "type": "shell",
+            "script": "scripts/install_ruby.sh",
+            "execute_command": "sudo {{.Path}}"
         }
     ]
 }
+
+
+
 

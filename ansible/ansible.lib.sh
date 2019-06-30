@@ -20,3 +20,6 @@ function store_ssh_password(){
 	eval "$(ssh-agent -s)" && ssh-add $1
 }
 
+function check_ansible_syntax(){
+	find ansible ! -name "inventory*.yml" -name "*.yml" -type f -print0 | xargs -0 -n1 ansible-playbook --syntax-check
+}
