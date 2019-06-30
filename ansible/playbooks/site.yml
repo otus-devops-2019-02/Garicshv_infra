@@ -1,4 +1,5 @@
 ---
+- import_playbook: users.yml
 - import_playbook: apt_upgrade_update.yml
 - import_playbook: install_ruby.yml
 - import_playbook: install_mongodb.yml

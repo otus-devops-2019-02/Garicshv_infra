@@ -12,6 +12,8 @@ function usage(){
 	echo "$0 ssh_db"
 	echo "$0 ssh_app"
 	echo "$0 check_ansible_syntax"
+        echo "$0 encrypt_credentials [prod|stage]"
+	echo "$0 decrypt_credentials [prod|stage]"
 	exit 1
 }
 
@@ -23,6 +25,19 @@ function check_reddit_app(){
 
 function play_reddit_db(){
 	ansible-playbook reddit_app.yml --limit app --tags app-tag 
+}
+
+function encrypt_credentials(){
+	encryption_path=environments/$1/credentials.yml
+	echo "Encripting credentilas path [$encryption_path]"
+	ansible-vault encrypt $encryption_path
+}
+
+function decrypt_credentials(){
+	dencryption_path=environments/$1/credentials.yml
+	echo "Decripting credentilas path [$dencryption_path]"
+        ansible-vault decrypt $dencryption_path
+
 }
 case $1 in
 	init)
@@ -75,8 +90,26 @@ case $1 in
 	ansible-galaxy init db
 	;;
 
+	encrypt_credentials)
+	if [ "$2" != "prod" ] && [ "$2" != "stage" ]
+	then
+		usage
+	fi
+	encrypt_credentials $2
+	;;
+	
+	decrypt_credentials)
+	if [ "$2" != "prod" ] && [ "$2" != "stage" ]
+        then
+                usage
+        fi
+
+	decrypt_credentials $2
 	*)
 	usage
 	;;
 esac
+
+# ansible-galaxy install -r environments/stage/requirements.yml
+# ansible-vault edit <file>
 
